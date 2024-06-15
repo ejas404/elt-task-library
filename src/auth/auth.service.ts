@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AuthorService } from 'src/author/author.service';
 import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
+import { Author } from 'src/author/schema/author.schema';
 
 type SignUpResponse = {success : boolean, msg : string}
 

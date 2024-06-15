@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
+import { MongoExceptionFilter } from './filters/mongoose-exception.filter';
 
 @Module({
   imports: [

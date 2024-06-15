@@ -1,4 +1,4 @@
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+import { IsDate, IsDateString, IsNotEmpty, IsString } from 'class-validator';
 
 
 
@@ -15,8 +15,8 @@ export class CreateAuthorDto{
     password : string;
 
     @IsNotEmpty()
-    @IsDate()
-    birthdate : Date
+    @IsDateString()
+    birthdate : Date;
     
     biography : string;
 }

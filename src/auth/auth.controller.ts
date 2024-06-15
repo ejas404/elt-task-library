@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
 import { AuthService } from './auth.service';
+import { Author } from 'src/author/schema/author.schema';
 
 @Controller('')
 export class AuthController {

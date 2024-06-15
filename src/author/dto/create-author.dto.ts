@@ -6,19 +6,19 @@ export class CreateAuthorDto{
    
     @IsNotEmpty()
     @IsString()
-    userId : string;
+    readonly userId : string;
 
     @IsNotEmpty()
     @IsString()
-    fullName : string;
+    readonly fullName : string;
 
     @IsNotEmpty()
     @IsString()
-    password : string;
+    readonly password : string;
 
     @IsNotEmpty()
     @IsDateString()
-    birthdate : Date;
+    readonly birthdate : Date;
     
-    biography : string;
+    readonly biography : string;
 }

@@ -3,12 +3,14 @@ import { IsDate, IsDateString, IsNotEmpty, IsString } from 'class-validator';
 
 
 export class CreateAuthorDto{
-    
-    id : string;
+   
+    @IsNotEmpty()
+    @IsString()
+    userId : string;
 
     @IsNotEmpty()
     @IsString()
-    name : string;
+    fullName : string;
 
     @IsNotEmpty()
     @IsString()

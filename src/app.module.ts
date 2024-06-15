@@ -7,6 +7,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
 import { MongoExceptionFilter } from './filters/mongoose-exception.filter';
+import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { MongoExceptionFilter } from './filters/mongoose-exception.filter';
     MongooseModule.forRoot(process.env.MONGO_URI),
     AdminModule,
     AuthModule,
-    AuthorModule
+    AuthorModule,
+    BookModule
   ],
   controllers: [AppController],
   providers: [AppService],

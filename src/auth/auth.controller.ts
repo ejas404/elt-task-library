@@ -1,7 +1,6 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Post, UseInterceptors } from '@nestjs/common';
 import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
 import { AuthService } from './auth.service';
-import { Author } from 'src/author/schema/author.schema';
 import { LoginDto } from './dto/login.dto';
 
 @Controller('')
@@ -14,6 +13,7 @@ export class AuthController {
         return await this.authService.signup(authData)
     }
 
+    @UseInterceptors(ClassSerializerInterceptor)
     @Post('login')
     async login(@Body() authData : LoginDto){  
         return await this.authService.login(authData)

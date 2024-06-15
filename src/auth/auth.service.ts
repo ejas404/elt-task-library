@@ -4,20 +4,10 @@ import { AuthorService } from 'src/author/author.service';
 import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
 import { LoginDto } from './dto/login.dto';
 import { checkPasswordMatch } from './utils/bcrypt-hash';
+import { AuthorResponseDto } from 'src/author/dto/author-response.dto';
+import { plainToInstance } from 'class-transformer';
 
 type SignUpResponse = { success: boolean, msg: string }
-
-// generate dto for author login response
-const genAuthorResponse = (data: CreateAuthorDto) => {
-    const { fullName, biography, userId, birthdate } = data;
-    const authorDto = new CreateAuthorDto()
-
-    authorDto.fullName = fullName
-    authorDto.biography = biography
-    authorDto.userId = userId
-    authorDto.birthdate = birthdate;
-    return authorDto;
-}
 
 @Injectable()
 export class AuthService {
@@ -32,8 +22,8 @@ export class AuthService {
         return { success: true, msg: "Sign up successfully" }
     }
 
-    
-    async login(data: LoginDto): Promise<{ authorDto: CreateAuthorDto, access_token: string }> {
+
+    async login(data: LoginDto): Promise<AuthorResponseDto> {
 
         const { userId } = data
 
@@ -41,10 +31,11 @@ export class AuthService {
         if (!user) throw new BadRequestException("No user existing");
         if (!checkPasswordMatch(data.password, user.password)) throw new UnauthorizedException("Invalid user id or password");
 
-        const authorDto = genAuthorResponse(user)
-        const payload = { sub: authorDto.userId, username: authorDto.fullName };
+        const payload = { sub: user.userId, username: user.fullName };
         const access_token = await this.jwtService.signAsync(payload)
+        const authorResponse = plainToInstance(AuthorResponseDto, user, { excludeExtraneousValues: true })
+        authorResponse.token = access_token;
 
-        return { authorDto, access_token }
+        return authorResponse
     }
 }

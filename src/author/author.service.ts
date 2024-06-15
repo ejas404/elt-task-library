@@ -6,6 +6,7 @@ import { hashPassword } from 'src/auth/utils/bcrypt-hash';
 
 @Injectable()
 export class AuthorService {
+   
     constructor(@InjectModel(Author.name) private authorModel: Model<Author>) { }
 
     async createAuthor(author: Author) {
@@ -18,5 +19,9 @@ export class AuthorService {
         const hash = await hashPassword(password);
         author['password'] = hash;
         await this.authorModel.create(author)
+    }
+
+    async  findByUserId(userId: string) {
+        return await this.authorModel.findOne({userId})
     }
 }

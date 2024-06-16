@@ -31,7 +31,8 @@ export class AuthService {
         if (!user) throw new BadRequestException("No user existing");
         if (!checkPasswordMatch(data.password, user.password)) throw new UnauthorizedException("Invalid user id or password");
 
-        const payload = { sub: user.userId, username: user.fullName };
+        const{fullName} = user
+        const payload = { sub: user.userId, user: {fullName , userId , role : "User"} };
         const access_token = await this.jwtService.signAsync(payload)
         const authorResponse = plainToInstance(AuthorResponseDto, user, { excludeExtraneousValues: true })
         authorResponse.token = access_token;

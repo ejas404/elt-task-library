@@ -17,6 +17,7 @@ export class Book {
     @Prop({default : false})
     isDeleted : boolean
     
+    @Prop()
     description: string;
 }
 

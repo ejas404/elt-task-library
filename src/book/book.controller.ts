@@ -1,4 +1,4 @@
-import { Body, ClassSerializerInterceptor, Controller, Delete, Param, Post, UseInterceptors } from '@nestjs/common';
+import { Body, ClassSerializerInterceptor, Controller, Delete, Get, Param, Post, UseInterceptors } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BookService } from './book.service';
 
@@ -17,5 +17,16 @@ export class BookController {
     async delete(@Param() params : {id : string}) {
         const {id} = params;
         return await this.bookService.deleteBook(id)
+    }
+
+    @Get('author/:id')
+    async getAuthorBooks(@Param() params : {id : string}){
+        const {id} = params;
+        return await this.bookService.getAuthorBooks(id)
+    }
+
+    @Get('')
+    async getAllBooks(){
+        return await this.bookService.getAllBooks()
     }
 }

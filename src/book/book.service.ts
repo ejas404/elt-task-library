@@ -12,7 +12,7 @@ export class BookService {
     constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
     async createBook(book: CreateBookDto) {
         const { title } = book
-        const isExist = await this.bookModel.findOne({ title })
+        const isExist = await this.bookModel.findOne({ title : new RegExp(title,'i') });
         if (isExist) throw new BadRequestException('book with same title already exists');
 
         book['id'] = uuidv4();
@@ -22,9 +22,17 @@ export class BookService {
     }
 
     async deleteBook(id : string){
-        const deletedBoook = await this.bookModel.findOneAndDelete({id})
-        if(!deletedBoook) throw new BadRequestException('ivalid id or no book with provided id');
-        const bookResponse = plainToInstance(BookResponseDto, deletedBoook, { excludeExtraneousValues: true });
-        return bookResponse;
+        const book = await this.bookModel.findOne({id})
+        if(!book) throw new BadRequestException('invalid id or no book with provided id');
+        await book.save()
+        return {success : true , msg : 'book deleted successfully'};
+    }
+
+    async getAuthorBooks(authorId : string){
+        return await this.bookModel.find({authorId , isDeleted : false })
+    }
+
+    async getAllBooks(){
+        return await this.bookModel.find({isDeleted : false })
     }
 }

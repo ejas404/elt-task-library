@@ -7,7 +7,7 @@ import { checkPasswordMatch } from './utils/bcrypt-hash';
 import { AuthorResponseDto } from 'src/author/dto/author-response.dto';
 import { plainToInstance } from 'class-transformer';
 
-type SignUpResponse = { success: boolean, msg: string }
+export type SignUpResponse = { success: boolean, msg: string }
 
 @Injectable()
 export class AuthService {

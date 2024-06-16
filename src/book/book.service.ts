@@ -29,10 +29,10 @@ export class BookService {
     }
 
     async getAuthorBooks(authorId : string){
-        return await this.bookModel.find({authorId , isDeleted : false })
+        return await this.bookModel.find({authorId , isDeleted : false }).lean()
     }
 
     async getAllBooks(){
-        return await this.bookModel.find({isDeleted : false })
+        return await this.bookModel.find({isDeleted : false }).lean()
     }
 }

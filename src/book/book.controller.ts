@@ -1,7 +1,7 @@
 import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, Param, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BookService } from './book.service';
-import { AuthGuard } from '../../src/auth/guard/auth.guard';
+import { AuthGuard } from 'src/auth/guard/auth.guard';
 import { ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BookResponseDto } from './dto/book-response.dto';
 
@@ -78,7 +78,7 @@ export class BookController {
         return await this.bookService.getAllBooks()
     }
 
-    
+
 
     @Get('by-date-range')
     @ApiQuery({ name: 'start', type: String, required: true, example: '2024-06-01' })

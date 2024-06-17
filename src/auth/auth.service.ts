@@ -1,10 +1,10 @@
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { AuthorService } from '../../src/author/author.service';
-import { CreateAuthorDto } from '../../src/author/dto/create-author.dto';
+import { AuthorService } from 'src/author/author.service';
+import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
 import { LoginDto } from './dto/login.dto';
 import { checkPasswordMatch } from './utils/bcrypt-hash';
-import { AuthorResponseDto } from '../../src/author/dto/author-response.dto';
+import { AuthorResponseDto } from 'src/author/dto/author-response.dto';
 import { plainToInstance } from 'class-transformer';
 
 export type SignUpResponse = { success: boolean, msg: string }

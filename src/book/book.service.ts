@@ -30,15 +30,21 @@ export class BookService {
     }
 
     async getAuthorBooks(authorId : string){
-        return await this.bookModel.find({authorId , isDeleted : false }).lean()
+        const books = await this.bookModel.find({authorId , isDeleted : false }).lean()
+        const bookResponse = plainToInstance(BookResponseDto, books, { excludeExtraneousValues: true })
+        return bookResponse;
     }
 
     async getAllBooks(){
-        return await this.bookModel.find({isDeleted : false }).lean()
+        const books = await this.bookModel.find({isDeleted : false }).lean()
+        const bookResponse = plainToInstance(BookResponseDto, books, { excludeExtraneousValues: true })
+        return bookResponse;
     }
 
     async findBooksByDateRange(startDate: Date, endDate: Date): Promise<BookResponseDto[]> {
-        return await this.bookModel.find({publishedDate: {$gte: startDate,$lte: endDate}, isDeleted : false}).lean()
+        const books = await this.bookModel.find({publishedDate: {$gte: startDate,$lte: endDate}, isDeleted : false}).lean()
+        const bookResponse = plainToInstance(BookResponseDto, books, { excludeExtraneousValues: true })
+        return bookResponse;
     }
 
 }

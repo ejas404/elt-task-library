@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service';
-import { AuthorService } from '../../src/author/author.service';
+import { AuthorService } from 'src/author/author.service';
 import { JwtService } from '@nestjs/jwt';
-import { CreateAuthorDto } from '../../src/author/dto/create-author.dto';
+import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
 import { LoginDto } from './dto/login.dto';
-import { AuthorResponseDto } from '../../src/author/dto/author-response.dto';
+import { AuthorResponseDto } from 'src/author/dto/author-response.dto';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { SignUpResponse } from './auth.service';

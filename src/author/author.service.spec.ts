@@ -4,7 +4,7 @@ import { AuthorService } from './author.service';
 import { Model } from 'mongoose';
 import { BadRequestException } from '@nestjs/common';
 import { Author } from './schema/author.schema';
-import { hashPassword } from '../../src/auth/utils/bcrypt-hash';
+import { hashPassword } from 'src/auth/utils/bcrypt-hash';
 
 
 jest.mock('../../src/auth/utils/bcrypt-hash');

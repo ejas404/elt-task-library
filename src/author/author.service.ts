@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Author } from './schema/author.schema';
 import { Model } from "mongoose";
-import { hashPassword } from '../../src/auth/utils/bcrypt-hash';
+import { hashPassword } from 'src/auth/utils/bcrypt-hash';
 
 @Injectable()
 export class AuthorService {

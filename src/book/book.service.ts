@@ -9,6 +9,7 @@ import { plainToInstance } from 'class-transformer';
 
 @Injectable()
 export class BookService {
+   
     constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
     async createBook(book: CreateBookDto) {
         const { title } = book
@@ -35,4 +36,9 @@ export class BookService {
     async getAllBooks(){
         return await this.bookModel.find({isDeleted : false }).lean()
     }
+
+    async findBooksByDateRange(startDate: Date, endDate: Date): Promise<BookResponseDto[]> {
+        return await this.bookModel.find({publishedDate: {$gte: startDate,$lte: endDate}, isDeleted : false}).lean()
+    }
+
 }

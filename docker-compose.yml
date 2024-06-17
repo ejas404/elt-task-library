@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  nestjs_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3344:3344
+    environment:
+      NODE_ENV: development
+      PORT: 3344
+      MONGO_URI: mongodb://mongo_db:27017/elt
+      CLIENT_URL: http://localhost:4200
+      JWT_SECRET: 'DO NOT USE THIS VALUE. INSTEAD, CREATE A COMPLEX SECRET AND KEEP IT SAFE OUTSIDE OF THE SOURCE CODE.'
+    volumes:
+      - ./src:/usr/src/app/src
+    depends_on: 
+      - mongo_db
+  
+  mongo_db:
+    container_name: database_container
+    image: mongo:latest
+    restart: always
+    volume:
+      - mongo_db:data/db
+  

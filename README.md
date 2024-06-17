@@ -31,7 +31,7 @@ $ pnpm run start:prod
 
 ### API Documentation (Swagger)
 
-[Link Text](https://uvlib.onrender.com/api)
+[UvLib API Documentation](https://uvlib.onrender.com/api)
 
 Creating API documentation using Swagger involves documenting endpoints, request parameters, response structures, and authentication methods in a structured format. Swagger provides a user-friendly interface for developers to understand and interact with the API, enhancing collaboration and integration across teams. By following Swagger's specifications, developers ensure clarity, consistency, and accessibility of the API documentation for seamless integration into various applications.
 

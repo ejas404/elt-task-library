@@ -1,10 +1,10 @@
 import { Body, ClassSerializerInterceptor, Controller, HttpStatus, Post, UseInterceptors } from '@nestjs/common';
-import { CreateAuthorDto } from 'src/author/dto/create-author.dto';
+import { CreateAuthorDto } from '../../src/author/dto/create-author.dto';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { ApiBadRequestResponse, ApiResponse, ApiTags, ApiTooManyRequestsResponse } from '@nestjs/swagger';
-import { AuthorResponseDto } from 'src/author/dto/author-response.dto';
-import { SignUpResponse } from './auth.service';
+import { AuthorResponseDto } from '../../src/author/dto/author-response.dto';
+
 
 @ApiTags('Auth')
 @Controller('')

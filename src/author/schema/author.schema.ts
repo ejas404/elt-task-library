@@ -15,7 +15,7 @@ export class Author {
     password: string
 
     @Prop({ required: true })
-    birthdate: Date
+    birthdate: string
 
     biography: string
 }

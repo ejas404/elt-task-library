@@ -48,7 +48,7 @@ export class CreateAuthorDto {
       })
     @IsNotEmpty()
     @IsDateString()
-    readonly birthdate: Date;
+    readonly birthdate: string;
     
     
     @ApiProperty({

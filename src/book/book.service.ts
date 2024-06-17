@@ -25,6 +25,7 @@ export class BookService {
     async deleteBook(id : string){
         const book = await this.bookModel.findOne({id})
         if(!book) throw new BadRequestException('invalid id or no book with provided id');
+        book.isDeleted = true;
         await book.save()
         return {success : true , msg : 'book deleted successfully'};
     }

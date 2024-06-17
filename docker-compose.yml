@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3344:3344
+      - 3000:3344
     environment:
       NODE_ENV: development
       PORT: 3344
@@ -23,6 +23,7 @@ services:
     image: mongo:latest
     restart: always
     volumes:
-      - mongo_db:data/db
-
+      - mongo_db:/data/db
+volumes:
+  mongo_db: {}
   

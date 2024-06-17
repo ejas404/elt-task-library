@@ -1,16 +1,19 @@
 FROM node:21
 
-ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
+WORKDIR /app
 
-WORKDIR /usr/src/app
 
-COPY . .
+COPY package.json .
 
 RUN npm install
 
+COPY . .
+
+RUN npm run build
+
 EXPOSE 3344
 
-# equal to npm run start:dev in terminal
-CMD ["npm", "run", "start:dev"]
+ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
 
+CMD ["npm", "run", "start:prod"]
 

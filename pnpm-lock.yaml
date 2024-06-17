@@ -41,6 +41,9 @@ importers:
       mongodb:
         specifier: ^6.7.0
         version: 6.7.0
+      mongoose:
+        specifier: ^8.4.1
+        version: 8.4.1
       reflect-metadata:
         specifier: ^0.2.0
         version: 0.2.2

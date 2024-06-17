@@ -33,6 +33,8 @@ $ pnpm run start:prod
 
 Creating API documentation using Swagger involves documenting endpoints, request parameters, response structures, and authentication methods in a structured format. Swagger provides a user-friendly interface for developers to understand and interact with the API, enhancing collaboration and integration across teams. By following Swagger's specifications, developers ensure clarity, consistency, and accessibility of the API documentation for seamless integration into various applications.
 
+![Alt text](./assets/swagger-ui.png)
+
 ## Contribution
 
 This repository is currently focused on core functionality and is not accepting additional feature contributions. The backend is designed to support client applications. However, you are welcome to contribute by addressing issues, adding tests, or making improvements that do not alter the exposed API's functionality or structure. If you are unsure whether a pull request would be accepted, feel free to open an issue to discuss it further.

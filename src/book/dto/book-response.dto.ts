@@ -14,7 +14,7 @@ export class BookResponseDto {
     
     @ApiProperty()
     @Expose()
-    description: Date;
+    description ?: string;
     
     @ApiProperty()
     @Expose()

@@ -37,6 +37,14 @@ Creating API documentation using Swagger involves documenting endpoints, request
 
 ![Alt text](./assets/swagger-ui.png)
 
+## Front End
+
+[LiveLink](https://elt-frontend.vercel.app)
+
+Utilizing Angular's robust framework, we implemented reactive forms, enabling seamless interaction for adding, editing, and viewing book details. The integration of services for API communication ensures real-time data synchronization, providing users with up-to-date information and a smooth user experience.
+
+![Alt text](./assets/uvlibClient.png)
+
 ## Contribution
 
 This repository is currently focused on core functionality and is not accepting additional feature contributions. The backend is designed to support client applications. However, you are welcome to contribute by addressing issues, adding tests, or making improvements that do not alter the exposed API's functionality or structure. If you are unsure whether a pull request would be accepted, feel free to open an issue to discuss it further.

@@ -12,6 +12,8 @@ export class AuthorService {
     async createAuthor(author: Author) {
         const { userId,password } = author;
 
+        console.log(author)
+
         // check if user exits with same userId
         const isExist = await this.authorModel.findOne({userId})
         if(isExist) throw new BadRequestException("cannot use this user id");

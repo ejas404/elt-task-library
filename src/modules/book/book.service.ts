@@ -26,10 +26,10 @@ export class BookService {
     async updateBook(book : UpdateBookDto){
         const {id,title} = book
 
-        const isTitleExist = await this.bookModel.findOne({ $or :[{title : new RegExp(title,'i')},{id}]});
+        const isTitleExist = await this.bookModel.findOne({title : new RegExp(title,'i')});
         // we can check if the updated title name exists in other books.
         // if there is one we can throw the exception
-        if(isTitleExist.id !== id) throw new BadRequestException('book with same title already exists');
+        if(isTitleExist && isTitleExist?.id !== id) throw new BadRequestException('book with same title already exists');
 
         const isExist = await this.bookModel.findOne({id});
         if(!isExist) throw new BadRequestException('invalid id or no book with provided id');

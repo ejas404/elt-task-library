@@ -69,6 +69,6 @@ export class CreateAuthorDto {
   })
   @IsOptional()
   @IsString()
-  @Length(250)
+  @Length(0,250)
   readonly biography: string;
 }

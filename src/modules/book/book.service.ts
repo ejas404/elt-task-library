@@ -6,6 +6,7 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { BookResponseDto } from './dto/book-response.dto';
 import { plainToInstance } from 'class-transformer';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @Injectable()
 export class BookService {
@@ -19,6 +20,26 @@ export class BookService {
         book['id'] = uuidv4();
         const newBook = await this.bookModel.create(book);
         const bookResponse = plainToInstance(BookResponseDto, newBook, { excludeExtraneousValues: true })
+        return bookResponse;
+    }
+
+    async updateBook(book : UpdateBookDto){
+        const {id,title} = book
+
+        const isTitleExist = await this.bookModel.findOne({ $or :[{title : new RegExp(title,'i')},{id}]});
+        // we can check if the updated title name exists in other books.
+        // if there is one we can throw the exception
+        if(isTitleExist.id !== id) throw new BadRequestException('book with same title already exists');
+
+        const isExist = await this.bookModel.findOne({id});
+        if(!isExist) throw new BadRequestException('invalid id or no book with provided id');
+
+        isExist.title = book.title;
+        isExist.description = book.description;
+        isExist.publishedDate = book.publishedDate;
+
+        await isExist.save()
+        const bookResponse = plainToInstance(BookResponseDto, isExist, { excludeExtraneousValues: true })
         return bookResponse;
     }
 

@@ -4,7 +4,7 @@ import { BookService } from './book.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BookResponseDto } from './dto/book-response.dto';
 import { BadRequestException } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { AuthGuard } from 'src/modules/auth/guard/auth.guard';
 
 describe('BookController', () => {
   let controller: BookController;

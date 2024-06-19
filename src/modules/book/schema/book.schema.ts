@@ -12,7 +12,7 @@ export class Book {
     authorId: string
     
     @Prop({ required: true })
-    publishedDate: Date
+    publishedDate: string
 
     @Prop({default : false})
     isDeleted : boolean

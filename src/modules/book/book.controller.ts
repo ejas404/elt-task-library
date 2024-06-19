@@ -1,9 +1,10 @@
-import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, Param, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, ClassSerializerInterceptor, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { BookService } from './book.service';
-import { AuthGuard } from 'src/auth/guard/auth.guard';
+import { AuthGuard } from 'src/modules/auth/guard/auth.guard';
 import { ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { BookResponseDto } from './dto/book-response.dto';
+import { UpdateBookDto } from './dto/update-book.dto';
 
 @ApiTags('Book')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -24,6 +25,17 @@ export class BookController {
         return await this.bookService.createBook(book)
     }
 
+
+    @ApiResponse({
+        status: 201,
+        description: "Update a book and return it with success response",
+        type: BookResponseDto
+    })
+    @UseGuards(AuthGuard)
+    @Put('update')
+    async update(@Body() book: UpdateBookDto) {
+        return await this.bookService.updateBook(book)
+    }
 
 
     @ApiResponse({
